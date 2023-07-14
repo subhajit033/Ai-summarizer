@@ -3,7 +3,7 @@ import { logo } from "../assets";
 const Hero = () => {
   return (
     <header className=" w-full">
-      <nav className="flex justify-between items-center mb-10 md:mb-20">
+      <nav className="flex justify-between items-center mb-6 md:mb-10">
         <img className="w-32 md:w-44" src={logo} alt="logo" />
         <i onClick={()=> window.open('https://github.com/subhajit033/Ai-summarizer')} className="fa-brands fa-github text-4xl hover:scale-125 hover:text-gray-600"></i>
       </nav>
