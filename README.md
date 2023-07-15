@@ -21,7 +21,7 @@ This is an Ai based article summarizer that leverages artificial intelligence to
 4. Review the summary and use it as a quick reference or to decide whether to explore the full article further.
 
 
-   ![usage image](./)
+   ![usage image](./src/assets/recording-2023-07-15-11-54-53_Edit.gif)
 
 
 ## Installation
