@@ -1,24 +1,35 @@
 import { useState, useEffect } from "react";
-import { loader, copy, linkIcon, tick, enter_sign } from "../assets";
+import { loader, copy, linkIcon, enter_sign } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
+import useTranslateText from "../hooks/useTranslateText";
+import { languageSupport } from "../constants/helper";
 const Demo = () => {
   const [visibleText, setVisibleText] = useState("");
   const [article, setArticle] = useState({
     url: "",
     summary: "",
   });
-  const [imagSrc, setImageSrc] = useState(copy);
+
+  const [textLang, setTextLang] = useState("");
+  const [isTranslationReqiured, setIsTranslationReqiured] = useState(false);
+  const handleLanguageChange = (e) => {
+    const langcode = languageSupport.filter((lang) => {
+      return e.target.value === lang.lan;
+    });
+    setTextLang(langcode[0].code);
+  };
+  useTranslateText(article.summary, textLang, isTranslationReqiured);  
   const [allArticle, setAllArticle] = useState([]);
-  // let countIndex = 0;
+
   useEffect(() => {
     let currentWordIndex = 0;
     const textInterval = setInterval(() => {
+      currentWordIndex++;
       if (currentWordIndex >= article.summary.length) {
         clearInterval(textInterval);
         return;
       }
       setVisibleText(article.summary.slice(0, currentWordIndex));
-      currentWordIndex++;
     }, 20);
 
     return () => {
@@ -47,11 +58,11 @@ const Demo = () => {
       }
       localStorage.setItem("articles", JSON.stringify(updatedArticle));
       setAllArticle(updatedArticle);
-      console.log(newArticle);
+      // console.log(newArticle);
     }
   };
   return (
-    <section className=" w-full mt-10">
+    <section className="w-full mt-10">
       <div>
         {/* To center the form in desktop mode */}
         <div className="md:flex md:justify-center">
@@ -87,16 +98,12 @@ const Demo = () => {
               <div
                 key={`link-${i}`}
                 onClick={() => {
-                  setArticle(article);
-                  setImageSrc(tick);
-                  setTimeout(() => {
-                    setImageSrc(copy);
-                  }, 1000);
+                  setArticle(article);                  
                 }}
                 className="link_card md:w-[45vw] "
               >
                 <div className="copy_btn">
-                  <img src={imagSrc} alt="copy-icon" />
+                  <img src={copy} alt="copy-icon" />
                 </div>
                 <p className="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap text-blue-500 w-72 md:w-full">
                   {article.url}
@@ -120,11 +127,30 @@ const Demo = () => {
         ) : (
           article.summary && (
             <div className="flex flex-col justify-start items-start gap-3 text-left">
-              <h2 className="text-xl font-semibold font-satoshi">
-                Article <span className="blue_gradient">Summary</span>
-              </h2>
+              <div className="flex items-center gap-3 md:gap-6 flex-wrap">
+                <h2 className="text-xl font-semibold font-satoshi">
+                  Article <span className="blue_gradient">Summary</span>
+                </h2>
+                <select
+                  onChange={handleLanguageChange}
+                  className="border-2 border-blue-500 px-2 py-1 rounded-lg"
+                >
+                  <option>Select language</option>
+                  {languageSupport?.map((language) => {
+                    return <option key={language.code}>{language.lan}</option>;
+                  })}
+                </select>
+                <button
+                  onClick={() => {
+                    setIsTranslationReqiured(true);
+                  }}
+                  className="bg-blue-400 px-2 py-1 rounded-lg text-white"
+                >
+                  Change Language
+                </button>
+              </div>
               <div className="summary_box">
-                <p>{visibleText}</p>
+                <p className="text-sm md:text-base">{visibleText}</p>
               </div>
             </div>
           )
