@@ -20,16 +20,14 @@ const useTranslateText = (summary, languageId, isTranslationReqiured) => {
   useEffect(() => {
     if (isTranslationReqiured) {
       getTranslateData();
-      console.log("Useeegeg");
+      
     }
   }, [summary, languageId, isTranslationReqiured]);
 
   const getTranslateData = async () => {
     try {
       const response = await fetch(url, options);
-      const result = await response.json();
-      console.log("Api called jj");
-      console.log(result);
+      const result = await response.json();      
       dispatch(addText(result));
     } catch (error) {
       console.error(error);

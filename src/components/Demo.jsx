@@ -12,7 +12,9 @@ const Demo = () => {
 
   const [textLang, setTextLang] = useState("");
   const [isTranslationReqiured, setIsTranslationReqiured] = useState(false);
+  const[isBtnDisabled, setIsBtnDisabled] = useState(true);
   const handleLanguageChange = (e) => {
+    setIsBtnDisabled(false);
     const langcode = languageSupport.filter((lang) => {
       return e.target.value === lang.lan;
     });
@@ -144,7 +146,8 @@ const Demo = () => {
                   onClick={() => {
                     setIsTranslationReqiured(true);
                   }}
-                  className="bg-blue-400 px-2 py-1 rounded-lg text-white"
+                  disabled={isBtnDisabled}
+                  className={`bg-blue-600 px-2 py-1 rounded-lg text-white hover:opacity-70 ${isBtnDisabled? 'cursor-no-drop': 'cursor-pointer'}`}
                 >
                   Change Language
                 </button>

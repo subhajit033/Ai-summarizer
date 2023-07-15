@@ -1,5 +1,6 @@
 import Hero from "./components/Hero";
 import Demo from "./components/Demo";
+import Translation from "./components/Translation";
 import "./App.css";
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <div className="app">
         <Hero />
         <Demo />
+        <Translation/>
       </div>
     </main>
   );
