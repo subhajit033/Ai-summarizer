@@ -38,5 +38,5 @@ To run the AI Article Summarizer locally, follow these steps:
 
 ## Support
 
-If you encounter any issues, have questions, or need further assistance, please reach out to our support team at [kundusubhajit73@gmail.com]. We are here to help!
+If you encounter any issues, have questions, or need further assistance, please reach out to me [kundusubhajit73@gmail.com]
 
