@@ -36,6 +36,6 @@ To run the AI Article Summarizer locally, follow these steps:
 
 5. Access the application through your web browser at `http://localhost:5173/`.
 
-## If you like it then give a == star to this repo ==
+## If you like it then give a star to this repo
 # Thank You 💖
 
