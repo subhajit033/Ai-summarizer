@@ -21,7 +21,7 @@ This is an Ai based article summarizer that leverages artificial intelligence to
 4. Review the summary and use it as a quick reference or to decide whether to explore the full article further.
 
 
-   ![usage image](./src/assets/recording-2023-07-15-11-54-53_Edit.gif)
+   ![usage image](./src/assets/usage.gif)
 
 
 ## Installation
@@ -36,6 +36,6 @@ To run the AI Article Summarizer locally, follow these steps:
 
 5. Access the application through your web browser at `http://localhost:5173/`.
 
-## If you like it then give a star to this repo
+## If you like it then give a == star to this repo ==
 # Thank You 💖
 
